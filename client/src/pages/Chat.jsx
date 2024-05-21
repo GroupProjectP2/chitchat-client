@@ -36,7 +36,7 @@ export default function Chat({ socket, username, room }) {
                 {messageList.map((messageContent) => {
                     return (
                         <div className="container border">
-                            <div className="bg-primary">
+                            <div className="bg-primary text-white">
                                 <p>{messageContent.message}</p>
                             </div>
                             <div className="message-meta">
