@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
-    const [email,setEmail] = useState("")
+    const [username,setUserName] = useState("")
     const [password,setPassword] = useState("")
     const [loading, setLoading]= useState(false)
     const navigate = useNavigate()
@@ -15,14 +15,20 @@ export default function Login() {
         setLoading(true)
 
     try {
-        let {data} = await axios.post("https://localhost:3000/login",{
-            email,
-            password
+        let {data} = await axios.post("https://localhost:3000/login",
+        {
+            username,
+            password,
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`
+            }
         })
         localStorage.setItem("access_token", data.access_token)
         Swal.fire({
             title: "Success login!",
-            text: 'Welcome to Hacktiv Course',
+            text: 'Welcome to ChitChat App',
             icon: "success"
           });
         navigate('/')
@@ -64,15 +70,15 @@ export default function Login() {
                                 />
                                 <h5 className="mb-4">Sign in to your account</h5>
                                 <label htmlFor="email" className="form-label">
-                                    Email address
+                                    Username
                                 </label>
                                 <input
-                                    type="email"
+                                    type="username"
                                     className="form-control"
-                                    id="email"
+                                    id="username"
                                     autoComplete="off"
-                                    value = {email}
-                                    onChange={(event) => setEmail(event.target.value)}
+                                    value = {username}
+                                    onChange={(event) => setUserName(event.target.value)}
                                 />
                             </div>
                             <div className="mb-3">
