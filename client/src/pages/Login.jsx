@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
@@ -15,7 +15,7 @@ export default function Login() {
         setLoading(true)
 
     try {
-        let {data} = await axios.post("https://api.p2.lc3s6.foxhub.space/login",{
+        let {data} = await axios.post("https://localhost:3000/login",{
             email,
             password
         })
@@ -91,6 +91,7 @@ export default function Login() {
                                 Login
                             </button>
                         </form>
+                        <p className='text-center mt-3'>Don`t have an account? <Link to={'/register'}>Register</Link> </p>
                     </div>
                 </div>
             </div>
