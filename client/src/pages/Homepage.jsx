@@ -1,15 +1,16 @@
 import Conversation from "../components/Conversation";
 import MessageInput from "../components/MessageInput";
 import MessageProfileHeader from "../components/MessageProfileHeader";
-import SearchInput from "../components/SearchInput";
+import UserProfile from "../components/UserProfile";
+// import { useDispatch, useSelector } from "react-redux";
 
 export default function Homepage() {
   return (
     <>
-      <div className="container mt-5 border p-3">
+      <div className="container my-5 border p-3 " style={{ height: "100vh" }}>
         <div className="row gap-3">
           <div id="div1" className="col border p-2">
-            <SearchInput></SearchInput>
+            <UserProfile></UserProfile>
             <Conversation></Conversation>
             <Conversation></Conversation>
             <Conversation></Conversation>
