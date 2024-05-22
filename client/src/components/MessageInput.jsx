@@ -7,6 +7,7 @@ export default function MessageInput({ fullName }) {
   const sendMessage = (e) => {
     e.preventDefault();
     const payload = {
+      id: localStorage.getItem("user_id"),
       sender: fullName,
       message: currentMessage,
       time:
