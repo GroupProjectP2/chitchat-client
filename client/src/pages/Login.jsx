@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setFullName } from "../features/auth/authSlice";
 import { Link, useNavigate } from 'react-router-dom'
-
 
 export default function Login() {
   const fullName = useSelector((state) => state.auth.fullName);
@@ -37,7 +37,6 @@ export default function Login() {
       dispatch(setFullName(data.fullName));
       console.log(fullName);
       navigate("/");
-
     } catch (error) {
       console.log(error.response?.data.message || error.message);
       Swal.fire({
@@ -103,5 +102,4 @@ export default function Login() {
       </div>
     </div>
   );
-
 }

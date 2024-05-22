@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Conversation from "../components/Conversation";
 import MessageInput from "../components/MessageInput";
 import MessageProfileHeader from "../components/MessageProfileHeader";
+
 import SearchInput from "../components/SearchInput";
 import { socket } from "../utils/socket";
-
 import UserProfile from "../components/UserProfile";
 // import { useDispatch, useSelector } from "react-redux";
 
@@ -83,6 +83,7 @@ export default function Homepage() {
             </form>
 
             <Conversation socket={socket} ></Conversation>
+
             <UserProfile></UserProfile>
             <Conversation></Conversation>
             <Conversation></Conversation>

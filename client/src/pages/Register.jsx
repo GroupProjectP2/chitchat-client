@@ -3,8 +3,6 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-
-
 export default function Login() {
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
@@ -244,15 +242,17 @@ export default function Login() {
                   onChange={(event) => setPassword(event.target.value)} />
               </div>
               {loading ? <div className="spinner-border"></div> : ''}
+
               <button type="submit" className="btn btn-primary w-100">
                 Register
               </button>
             </form>
+
             <p className='text-center mt-3'>Do you have an account? <Link to={'/login'}>Login</Link> </p>
+
           </div>
         </div>
       </div>
     </div>
-
-  )
+  );
 }
