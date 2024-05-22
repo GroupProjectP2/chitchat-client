@@ -1,9 +1,10 @@
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setFullName } from "../features/auth/authSlice";
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const fullName = useSelector((state) => state.auth.fullName);
@@ -16,6 +17,10 @@ export default function Login() {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    const [username, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     try {
       let { data } = await axios.post("http://localhost:3000/login", {
@@ -43,6 +48,7 @@ export default function Login() {
       setLoading(false);
     }
   };
+
   return (
     <div
       className="container-fluid d-flex justify-content-center align-items-center"
