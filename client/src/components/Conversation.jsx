@@ -1,8 +1,7 @@
 export default function Conversation() {
-  
   return (
     <>
-      <div className="card mb-3 p-3" style={{ maxWidth: 540 }}>
+      <div className="card border-0 mb-3 p-3" style={{ maxWidth: 540 }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img

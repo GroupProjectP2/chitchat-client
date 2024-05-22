@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { socket } from "../utils/socket";
-export default function MessageInput({ fullName }) {
+import { useSelector } from "react-redux";
+export default function MessageInput() {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const senderName = useSelector((state) => state.user.fullName);
 
   const sendMessage = (e) => {
     e.preventDefault();
     const payload = {
-      id: localStorage.getItem("user_id"),
-      sender: fullName,
+      sender: senderName,
       message: currentMessage,
       time:
         new Date(Date.now()).getHours() +
@@ -33,6 +34,7 @@ export default function MessageInput({ fullName }) {
       });
     }
   }, [socket]);
+
   return (
     <>
       <div className="d-flex flex-column align-items-start justify-content-start px-2 my-3">

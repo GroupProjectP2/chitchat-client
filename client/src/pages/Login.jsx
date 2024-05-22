@@ -1,15 +1,11 @@
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-import logo from '../assets/ChitChat.png'
+import logo from "../assets/ChitChat.png";
 
-import { useDispatch, useSelector } from "react-redux";
-import { setFullName } from "../features/auth/authSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
-  const fullName = useSelector((state) => state.auth.fullName);
-  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +13,7 @@ export default function Login() {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     try {
       let { data } = await axios.post("http://localhost:3000/login", {
@@ -33,8 +29,6 @@ export default function Login() {
       });
 
       console.log(data);
-      dispatch(setFullName(data.fullName));
-      console.log(fullName);
       localStorage.setItem("user_id", data.id);
       navigate("/");
     } catch (error) {
@@ -63,7 +57,6 @@ export default function Login() {
             <h3>Welcome to ChitChat App!</h3>
             <form onSubmit={handleOnSubmit}>
               <div className="mb-3 ">
-                
                 <h5 className="mb-4">Sign in to your account</h5>
                 <label htmlFor="email" className="form-label">
                   User Name
@@ -95,7 +88,9 @@ export default function Login() {
                 Login
               </button>
             </form>
-              <p className="text-center mt-3">Don`t have an account? <Link to={'/register'} >Register</Link></p>
+            <p className="text-center mt-3">
+              Don`t have an account? <Link to={"/register"}>Register</Link>
+            </p>
           </div>
         </div>
       </div>

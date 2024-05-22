@@ -1,4 +1,16 @@
-export default function UserProfile({ fullName, profilePic }) {
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLoggedUser } from "../features/auth/userSlice";
+import { useEffect } from "react";
+
+export default function UserProfile() {
+  const dispatch = useDispatch();
+  const fullName = useSelector((state) => state.user.fullName);
+  const profilePic = useSelector((state) => state.user.profilePic);
+  console.log(fullName, "<<< FULLNAME");
+
+  useEffect(() => {
+    dispatch(fetchLoggedUser());
+  }, [dispatch]);
   return (
     <>
       <div className="mb-2">
