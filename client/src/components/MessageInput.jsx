@@ -34,6 +34,7 @@ export default function MessageInput() {
       });
     }
   }, [socket]);
+
   return (
     <>
       <div className="d-flex flex-column align-items-start justify-content-start px-2 my-3">

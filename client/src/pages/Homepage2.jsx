@@ -1,41 +1,35 @@
-import { useState } from "react";
-import { socket } from "../utils/socket";
-import Chat from "./Chat";
+import { useNavigate } from "react-router-dom";
+import MessageInput from "../components/MessageInput";
+import UserProfile from "../components/UserProfile";
 
-export default function Homepage() {
-  const [username, setUsername] = useState("");
-  const [room, setRoom] = useState("");
-  const [showChat, setShowChat] = useState(false);
+export default function HomepageTest() {
+  const navigate = useNavigate();
 
-  const joinRoom = () => {
-    if (username && room) {
-      socket.emit("join_room", room);
-      setShowChat(true)
-    }
+  const handleLogout = (e) => {
+    e.preventDefault;
+    localStorage.clear();
+    navigate("/login");
   };
-
   return (
     <>
-        <div className="App">
-          <div className="joinChatContainer">
-            <div> Join A chat</div>
-            <input
-              type="text"
-              placeholder="Your Name..."
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Room Id..."
-              onChange={(e) => setRoom(e.target.value)}
-            />
-            <button onClick={joinRoom}>Join A room</button>
-            
-           
-            <Chat socket={socket} username={username} room={room} />
+      <div>
+        <div
+          className="container my-5 border p-3 d-flex flex-column rounded"
+          style={{ height: "100vh", backgroundColor: "#09c2b8" }}
+        >
+          <div id="div1" className="col p-2">
+            <UserProfile></UserProfile>
           </div>
-            
+          <MessageInput></MessageInput>
+          <button
+            className="btn btn-danger"
+            style={{ width: "5rem" }}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
+      </div>
     </>
   );
 }
