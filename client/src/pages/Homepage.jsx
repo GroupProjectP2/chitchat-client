@@ -46,9 +46,7 @@ export default function Homepage() {
               profilePic={profilePic}
             ></UserProfile>
             <Conversation></Conversation>
-            <Conversation></Conversation>
-            <Conversation></Conversation>
-            <Conversation></Conversation>
+
             <button className="btn btn-danger" onClick={handleLogout}>
               Logout
             </button>
